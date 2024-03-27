@@ -1,31 +1,16 @@
 #!/usr/bin/python3
-#*-------------------------------------------------------------------------*
-#* factorial_range.py                                                      *
-#* Calcula los factoriales dentro de un rango especificado                  *
-#* Dr.P.E.Colla (c) 2022                                                   *
-#* Creative commons                                                        *
-#*-------------------------------------------------------------------------*
+# Python program to display all the prime numbers within an interval
 
-def factorial(num):
-    if num < 0:
-        print("Factorial de un número negativo no existe")
-        return None
-    elif num == 0:
-        return 1
-    else:
-        fact = 1
-        while(num > 1):
-            fact *= num
-            num -= 1
-        return fact
+lower = 1
+upper = 100
 
-def calculate_factorials_within_range(start, end):
-    for num in range(start, end + 1):
-        print("Factorial", num, "! es", factorial(num))
+print("Prime numbers between", lower, "and", upper, "are:")
 
-# Obteniendo los límites del rango desde la entrada del usuario
-range_input = input("Ingrese el rango (desde-hasta) para calcular los factoriales: ")
-start, end = map(int, range_input.split('-'))
-
-print(f"Los factoriales entre {start} y {end} son:")
-calculate_factorials_within_range(start, end)
+for num in range(lower, upper + 1):
+   # all prime numbers are greater than 1
+   if num > 1:
+       for i in range(2, num):
+           if (num % i) == 0:
+               break
+       else:
+           print(num)

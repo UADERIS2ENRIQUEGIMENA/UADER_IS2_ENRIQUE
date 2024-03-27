@@ -1,28 +1,32 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #*-------------------------------------------------------------------------*
-#* factorial.py                                                            *
-#* calcula el factorial de un número                                       *
+#* factorial_range.py                                                      *
+#* Calcula los factoriales dentro de un rango especificado                  *
 #* Dr.P.E.Colla (c) 2022                                                   *
 #* Creative commons                                                        *
 #*-------------------------------------------------------------------------*
-import sys
 
-def factorial(num): 
-    if num < 0: 
+def factorial(num):
+    if num < 0:
         print("Factorial de un número negativo no existe")
         return None
-    elif num == 0: 
+    elif num == 0:
         return 1
-    else: 
+    else:
         fact = 1
-        while(num > 1): 
-            fact *= num 
+        while(num > 1):
+            fact *= num
             num -= 1
-        return fact 
+        return fact
 
-if len(sys.argv) < 2:
-    num = int(input("Por favor, ingrese un número para calcular su factorial: "))
-else:
-    num = int(sys.argv[1])
+def calculate_factorials_within_range(start, end):
+    for num in range(start, end + 1):
+        print("Factorial", num, "! es", factorial(num))
 
-print("Factorial", num, "! es", factorial(num))
+# Obteniendo los límites del rango desde la entrada del usuario
+range_input = input("Ingrese el rango (desde-hasta) para calcular los factoriales: ")
+start, end = map(int, range_input.split('-'))
+
+print(f"Los factoriales entre {start} y {end} son:")
+calculate_factorials_within_range(start, end)
+
