@@ -25,8 +25,20 @@ def calculate_factorials_within_range(start, end):
 
 # Obteniendo los límites del rango desde la entrada del usuario
 range_input = input("Ingrese el rango (desde-hasta) para calcular los factoriales: ")
-start, end = map(int, range_input.split('-'))
+
+if '-' in range_input:
+    start, end = map(int, range_input.split('-'))
+    if start == "":
+        start = 1
+    if end == "":
+        end = 60
+else:
+    if range_input.startswith('-'):
+        start = 1
+        end = int(range_input[1:])
+    elif range_input.endswith('-'):
+        start = int(range_input[:-1])
+        end = 60
 
 print(f"Los factoriales entre {start} y {end} son:")
 calculate_factorials_within_range(start, end)
-
